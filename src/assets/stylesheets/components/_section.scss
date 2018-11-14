@@ -1,0 +1,172 @@
+a{
+    text-decoration: none!important;
+    cursor: pointer;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.banner .Txt{
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+.banner .Txt h2{
+    letter-spacing: 4px;
+}
+
+.selector .custom-control-label::before{
+    border: 1px solid $input-border-color;
+}
+.selector .custom-control-label {
+    color: $gray-600;
+    font-weight: 300;
+}
+.selector .custom-control-label:hover{
+    color: $primary;
+}
+.selector .custom-control-label:hover::before {
+    border: 1px solid $primary;
+}
+.selector .custom-control-input:checked ~ .custom-control-label::before{
+    border: 1px solid $primary;
+    
+}
+.selector .custom-control-input:checked~.custom-control-label{
+   color: $black;
+}
+
+.photo ul li{
+    background: $black;
+}
+.photo ul li img{
+    opacity: 0.5;
+    width: 100%;
+}
+.restaurant.item-card{
+    overflow: unset;
+}
+.restaurant .card-body{
+    padding: 0.75rem 0;
+}
+.restaurant .box{
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+.restaurant .btn-lovely {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    margin-top: -13px;
+    padding: 3px 10px;
+    border-radius: $border-radius-lg;
+}
+.restaurant .detail{
+    position: relative;
+}
+.menu .menu-category a{
+    position: relative;
+    display: inline-block;
+    padding: $spacer;
+    transition: all 0.3s ease;
+}
+.menu .menu-category a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    background: $primary;
+}
+.menu .menu-category a:hover,
+.menu .menu-category a.current {
+    color: $primary;
+}
+.menu .menu-category a:hover::after,
+.menu .menu-category a.current::after {
+    height: 2px;
+}
+.menu .menu-list ul li{
+    position: relative;
+}
+.menu .menu-list ul li h4{
+    width: 100%;
+    display: block;
+}
+.menu .menu-list ul li .button i.icon{
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.reviews ul li span.date{
+    position: absolute;
+    right: 0;
+    top: $spacer;
+    font-size: 13px;
+}
+.reviews ul li:last-child{
+    border: none!important;
+}
+
+.shopping-cart ul li:hover span.title{
+    color: $primary;
+}
+.theme-primary .vdatetime-popup__header,
+.theme-primary .vdatetime-calendar__month__day--selected>span>span,
+.theme-primary .vdatetime-calendar__month__day--selected:hover>span>span {
+    background: $primary;
+}
+
+.theme-primary .vdatetime-year-picker__item--selected,
+.theme-primary .vdatetime-time-picker__item--selected,
+.theme-primary .vdatetime-popup__actions__button {
+    color: $primary;
+}
+.payBox span.step{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    background: $primary;
+    color: $white;
+    border-radius: $border-radius;
+    line-height: 30px;
+    margin-right: 20px;
+    font-size: 18px;
+}
+#nprogress .bar {
+    height: 4px!important;
+    background: $primary !important;
+}
+.order .order_link{
+    border-bottom: 1px solid $gray-300;
+    margin-top: 10px;
+}
+.order .order_link a{
+    display: inline-block;
+    padding: 0 15px 10px 15px;
+    position: relative;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+.order .order_link a:after{
+    content:"";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    background: $primary;
+}
+.order .order_link a.active{
+    color: $primary;
+}
+.order .order_link a.active:after {
+    height: 3px;
+}
+.router-link-active li.list-group-item{
+    background: $primary;
+    color: #fff;
+}

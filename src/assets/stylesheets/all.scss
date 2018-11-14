@@ -1,0 +1,13 @@
+@import "~bootstrap/scss/functions";
+@import "helpers/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "fonts/iconfont.css";
+
+//區塊
+@import "components/header";
+@import "components/section";
+@import "components/footer";
+
+//元件
+@import "components/search";
+@import "components/item-card";
