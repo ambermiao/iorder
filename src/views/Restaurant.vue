@@ -28,7 +28,7 @@
                   <!--<button class="btn btn-sm btn-outline-primary btn-lovely"><i class="icon iconfont icon-jushoucang mr-1 small"></i>加入收藏</button>-->
                 </div>
                 <div class="menu" ref="menu">
-                  <div class="menu-category box border-top border-bottom">
+                  <div class="menu-category box border-top border-bottom bg-white" :class="{'sticky-top': is_categoryfixed,'shadow-sm': is_categoryfixed}">
                     <swiper :options="swiperOption" :not-next-tick="notNextTick" ref="mySwiper">
                       <swiper-slide v-for="category in getRestaurantData.menu.category" :key="category.id">
                         <a :class="{current:category.id == selected_category_id}" @click="choosed(category.id)">{{category.title}}</a>
@@ -37,7 +37,7 @@
                       <div class="swiper-button-next" slot="button-next"></div>
                     </swiper>
                   </div>
-                  <div class="menu-list box py-3">
+                  <div class="menu-list box py-3" ref="menu">
                     <p class="text-muted text-center" v-for="category in getRestaurantData.menu.category" :key="category.id" v-if="category.id == selected_category_id">~ {{category.content}} ~</p>
                     <ul>
                       <li class="row no-gutters border p-3 mb-3 rounded justify-content-between align-items-center" v-for="menu in setMenu" :key="menu.id">
@@ -74,8 +74,8 @@
               </div>
             </div>-->
           </div>
-          <div class="col col-4 shopping-cart">
-            <cart :getRestaurantData="getRestaurantData"></cart>
+          <div class="col col-4 shopping-cart" ref="cart">
+            <cart :getRestaurantData="getRestaurantData" :isCartfixed="is_cartfixed"></cart>
           </div>
         </div>
       </div>
@@ -105,6 +105,7 @@ import Cart from '../components/Cart'
       this.$store.dispatch('getRestaurant',Number(this.$route.params.id)).then(()=>{
         this.$Progress.finish()
       })
+      window.addEventListener('scroll',this.fixedCategory)
     },
     data(){
       return{
@@ -117,7 +118,9 @@ import Cart from '../components/Cart'
             prevEl: '.swiper-button-prev'
           }
         },
-        selected_item:null
+        selected_item:null,
+        is_categoryfixed: false,
+        is_cartfixed: false
       }
     },
     computed:{
@@ -128,6 +131,12 @@ import Cart from '../components/Cart'
         return this.getRestaurantData.menu.item.filter((item)=>{
           return item.category_id == this.selected_category_id
         })
+      },
+      categoryTop(){
+        return this.$refs.menu.offsetTop
+      },
+      cartTop(){
+        return this.$refs.cart.offsetTop
       }
     },
     methods:{
@@ -144,6 +153,19 @@ import Cart from '../components/Cart'
       },
       changeSelectedItem(item){
         this.selected_item = item
+      },
+      fixedCategory(){
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if(scrollTop > this.categoryTop){
+          this.is_categoryfixed = true
+        }else{
+          this.is_categoryfixed = false
+        }
+        if(scrollTop > this.cartTop){
+          this.is_cartfixed = true
+        }else{
+          this.is_cartfixed = false
+        }
       }
     }
   }

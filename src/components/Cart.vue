@@ -1,5 +1,5 @@
 <template>
-    <div class="card shadow-sm">
+    <div class="card shadow-sm" :class="{'sticky-top': isCartfixed}">
         <div class="card-body py-4">
             <h5 class="card-title">{{getRestaurantData.title}}</h5>
             
@@ -25,7 +25,7 @@
                     <span>總金額</span>
                     <span class="money float-right text-primary">NT${{total}}</span>
                 </div>
-                <button class="btn btn-primary w-100" v-if="!is_payment" @click="pay">結帳</button>
+                <button class="btn btn-primary w-100" v-if="!is_payment" @click="pay" :disabled="cart.products.length == 0">結帳</button>
             </div>
         </div>
         <UpdateItemModal :selectedCart="selectedCart" :optionObj="optionObj"></UpdateItemModal>
@@ -40,6 +40,7 @@
         },
         props: {
             getRestaurantData: Object,
+            isCartfixed: Boolean
         },
         
         data() {

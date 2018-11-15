@@ -7,11 +7,15 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import jQuery from 'jquery'
 import VueProgressBar from 'vue-progressbar'
+import zh_TW from 'vee-validate/dist/locale/zh_TW'
+import VeeValidate, {Validator} from 'vee-validate'
+
 
 import './assets/stylesheets/all.scss'
 global.$ = jQuery
-
 Vue.use(VueAxios, axios)
+Vue.use(VeeValidate, { events: 'blur' })
+Validator.localize('zh_TW', zh_TW);
 Vue.use(VueProgressBar, {
   color: '#f94665',
   failedColor: 'red',

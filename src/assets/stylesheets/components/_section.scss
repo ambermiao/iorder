@@ -170,3 +170,10 @@ ul {
     background: $primary;
     color: #fff;
 }
+.is-validated{
+    border-color: $danger;
+}
+.sticky-top{
+    position: sticky;
+    top: 0;
+}

@@ -62,8 +62,9 @@
                     return new Date(item.datetime) > new Date()
                 })
                 return list.map((item)=>{
-                    item.datetime = getdate(item.datetime)
-                    return item
+                    const copy_item = Object.assign({}, item)
+                    copy_item.datetime = getdate(copy_item.datetime)
+                    return copy_item
                 })
             },
             orderlist_finish() {
@@ -71,8 +72,9 @@
                     return new Date(item.datetime) <= new Date()
                 })
                 return list.map((item)=>{
-                    item.datetime = getdate(item.datetime)
-                    return item
+                    const copy_item = Object.assign({}, item)
+                    copy_item.datetime = getdate(copy_item.datetime)
+                    return copy_item
                 })
             }
         },
