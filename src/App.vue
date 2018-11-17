@@ -6,14 +6,10 @@
           <img v-if="is_home" src="./assets/images/logo_white.svg" width="230" />
           <img v-else src="./assets/images/logo.svg" width="230" />
         </router-link>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="searchBox pl-4" v-if="is_list">
           <Search></Search>
         </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
               <a class="nav-link cart" @click="linkRestaurant">
@@ -23,9 +19,10 @@
             </li>
             <li class="nav-item dropdown" v-if="is_login">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-if="member">
-                <i class="icon iconfont icon-geren mr-1 login-icon align-middle"></i>{{member.name}}
+                <i class="icon iconfont icon-geren mr-1 login-icon align-middle"></i><span class="mobile-hide">{{member.name}}</span>
               </a>
               <div class="dropdown-menu">
+                <p class="px-4 text-center is-mobile"><span class="text-primary">{{member.name}}</span> 您好!!</p>
                 <router-link to="/member/orderlist" class="dropdown-item">我的訂單</router-link>
                 <router-link to="/member/info" class="dropdown-item">個人檔案</router-link>
                 <a class="dropdown-item" @click="logoutAction">登出</a>
@@ -33,7 +30,7 @@
             </li>
             <li class="nav-item dropdown" v-else>
               <a class="nav-link" data-toggle="modal" data-target="#loginModal">
-                <i class="icon iconfont icon-geren mr-1 login-icon align-middle"></i>登入/註冊
+                <i class="icon iconfont icon-geren mr-1 login-icon align-middle"></i><span class="mobile-hide">登入/註冊</span>
               </a>
             </li>
             
@@ -45,7 +42,7 @@
     <footer class="bg-white  pb-3 border-top" :class="is_payment ? 'pt-3':'pt-5'">
       <div class="container">
         <div class="row pb-5" v-if="!is_payment">
-          <div class="col col-lg-3">
+          <div class="col-12 col-sm-3 col-lg-3">
             <div class="downLogo"><img src="./assets/images/downLogo.svg" width="150" /></div>
             <div class="social mt-4 text-black-50">
               <a><i class="fab fa-facebook-f"></i></a>
@@ -53,7 +50,7 @@
               <a><i class="fab fa-youtube"></i></a>
             </div>
           </div>
-          <div class="col col-lg-2">
+          <div class="col-6 col-sm-2 col-lg-2">
             <h6>關於微碧愛普</h6>
             <ul class="list mt-4 text-black-50">
               <li><a>聯絡我們</a></li>
@@ -62,7 +59,7 @@
               <li><a>部落格</a></li>
             </ul>
           </div>
-          <div class="col col-lg-2">
+          <div class="col-6 col-sm-2 col-lg-2">
             <h6>開發產品</h6>
             <ul class="list mt-4 text-black-50">
               <li><a>功能特色</a></li>
@@ -72,13 +69,13 @@
               <li><a>行動支付</a></li>
             </ul>
           </div>
-          <div class="col col-lg-2">
+          <div class="col-12 col-sm-2 col-lg-2 download">
             <h6>下載APP</h6>
             <ul class="list mt-4">
               <li><a><img src="./assets/images/download.svg" width="120" /></a></li>
             </ul>
           </div>
-          <div class="col col-lg-3">
+          <div class="col-12 col-sm-3 col-lg-3">
             <h6>訂閱最新消息</h6>
             <form action="" class="mt-4">
               <div class="form-group">
@@ -108,14 +105,18 @@
     },
     mounted() {
       this.$store.dispatch('getMember')
+      this.w_width = window.innerWidth
+      window.addEventListener('resize', this.handleResize)
     },
     data() {
       return {
+        w_width: 0,
+        scrollTop: 0
       }
     },
     computed: {
       is_home() {
-        if (this.$route.path == '/') {
+        if (this.$route.path == '/' && this.w_width > 960) {
           return true
         }
         return false
@@ -143,6 +144,9 @@
       }
     },
     methods:{
+      handleResize() {
+        this.w_width = window.innerWidth
+      },
       setData (err, post) {
         if (err) {
           this.error = err.toString()

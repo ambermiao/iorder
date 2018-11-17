@@ -1,21 +1,24 @@
 <template>
   <div class="home">
-    <section class="banner position-relative">
-      <img class="w-100" src="../assets/images/banner.jpg" alt="">
+    <section class="banner position-relative" :style= "{ 'background-image': 'url(' + banner + ')' }">
       <div class="Txt w-100 text-center">
         <h2 class="font-weight-normal text-light">微避愛點餐<span class="pr-4"></span>點餐就是快</h2>
         <Search></Search>
       </div>
     </section>
-    <section class="category bg-light shadow-sm py-3">
+    <section class="category bg-light shadow-sm pt-3">
       <div class="container">
-        <div class="row justify-content-center">
-          <div class="col col-lg-1 text-center" v-for="item in getTagData" v-if="item.is_index">
-            <a @click="selectedTag(item.title)">
-              <img :src="item.image" width="40" alt="">
-              <p class="pt-2 mb-0">{{item.title}}</p>
-            </a>
-          </div>
+        <div class="row">
+          <swiper :options="tagSwiperOption">
+            <swiper-slide  v-for="item in getTagData" v-if="item.is_index" class="col col-lg-1 text-center" >
+              <div >
+                <a @click="selectedTag(item.title)">
+                  <img :src="item.image" width="40" alt="">
+                  <p class="pt-2 mb-0">{{item.title}}</p>
+                </a>
+              </div>
+            </swiper-slide>
+          </swiper>
         </div>
       </div>
     </section>
@@ -67,6 +70,7 @@
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 import Search from '../components/Search'
+import banner from '@/assets/images/banner.jpg';
   export default {
     name: 'home',
     components: {
@@ -102,14 +106,21 @@ import Search from '../components/Search'
         getRestaurantData:[],
         swiperOption: {
           notNextTick: false,
+          spaceBetween: 10,
           slidesPerView: 'auto',
           freeMode: true,
-          spaceBetween: 10,
           pagination: {
             el: '.swiper-pagination',
             clickable: true
           }
-        }
+        },
+        tagSwiperOption: {
+          notNextTick: false,
+          slidesPerView: 'auto',
+          freeMode: true,
+          spaceBetween: 0,
+        },
+        banner
       }
     },
     methods:{

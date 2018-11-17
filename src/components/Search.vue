@@ -1,5 +1,5 @@
 <template>
-    <div class="searchBox">
+    <div class="search">
         <form class="form-inline search" :class="is_home ? 'mt-5 d-inline-block':''" @submit.prevent="getSearch">
           <div class="label">
             <i class="icon iconfont icon-dangdi"></i>
@@ -9,7 +9,7 @@
             </select>
             <i class="icon iconfont icon-xiangxiajiantou arrow-bottom"></i>
           </div>
-          <div class="label mx-2">
+          <div class="label restaurant-search mx-2">
             <i class="icon iconfont icon-sousuo"></i>
             <v-select class="form-control py-0 pl-5" :class="{'border-0':is_home}"  label="title" :options="options" v-model="search.restaurant" @input="restaurantChange" placeholder="請輸入餐廳名稱或地址"></v-select>
           </div>

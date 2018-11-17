@@ -1,6 +1,17 @@
 nav{
     z-index: 2;
 }
+.navbar-nav {
+    flex-direction: row;
+}
+.navbar-nav .dropdown-menu {
+    position: absolute;
+    right: 0;
+    left: auto;
+}
+.navbar-nav .nav-link {
+    padding: 0 0 0 0.5rem;
+}
 .login-icon{
     font-size: 2.5rem;
 }
@@ -31,4 +42,20 @@ nav{
     border-width: 10.5px 0 10.5px 10px;
     border-color: transparent transparent transparent $primary;
     border-radius: 3px;
+}
+@include media-breakpoint-down(md) {
+    .navbar {
+        padding: 0;
+        position: fixed;
+        top: 0;
+        z-index: 100;
+    }
+    .navbar-brand img {
+        width: 220px;
+    }
+}
+@include media-breakpoint-down(xs) {
+    .navbar-brand img {
+        width: 180px;
+    }
 }

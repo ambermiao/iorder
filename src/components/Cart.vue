@@ -1,8 +1,8 @@
 <template>
     <div class="card shadow-sm" :class="{'sticky-top': isCartfixed}">
+        <i class="icon iconfont icon-CLOSE text-primary close is-mobile" @click="closeCart"></i>
         <div class="card-body py-4">
             <h5 class="card-title">{{getRestaurantData.title}}</h5>
-            
             <ul class="py-4 border-bottom border-top">
                 <p class="text-black-50 text-center" v-if="cart.products.length == 0">您的購物車尚未放入任何產品，現在開始選購吧！</p>
                 <li class="mb-2" v-else v-for="choosed in cart.products" @click="updateItem(choosed)">
@@ -30,6 +30,7 @@
         </div>
         <UpdateItemModal :selectedCart="selectedCart" :optionObj="optionObj"></UpdateItemModal>
     </div>
+    
 </template>
 <script>
     import UpdateItemModal from './UpdateItemModal'
@@ -84,7 +85,10 @@
                 }else{
                     this.$router.push({name: 'login'})
                 }
-                
+            },
+            closeCart(){
+                document.getElementById("cart").classList.remove("show")
+                document.getElementsByTagName("body")[0].classList.remove('modal-open')
             }
         }
 

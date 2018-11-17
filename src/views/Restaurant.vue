@@ -1,14 +1,18 @@
 <template>
-  <div class="list" v-if="getRestaurantData">
+  <div class="restaurant mobile" v-if="getRestaurantData">
     <section class="content bg-secondary pb-4" >
       <div class="photo">
         <ul class="row no-gutters">
-          <li class="col-3" v-for="(img,index) in getRestaurantData.restaurant_img" :key="index"><img :src="img" alt=""></li>
+          <swiper :options="swiperImgOption" :not-next-tick="notNextTick" ref="mySwiper">
+            <swiper-slide v-for="(img,index) in getRestaurantData.restaurant_img" :key="index">
+              <li ><img :src="img" alt=""></li>
+            </swiper-slide>
+          </swiper>
         </ul>
       </div>
       <div class="container">
         <div class="row">
-          <div class="col col-8">
+          <div class="col-12 col-lg-8">
             <div class="card item-card restaurant shadow-sm">
               <div class="card-body">
                 <div class="sample box pb-2 border-bottom">
@@ -42,7 +46,7 @@
                     <ul>
                       <li class="row no-gutters border p-3 mb-3 rounded justify-content-between align-items-center" v-for="menu in setMenu" :key="menu.id">
                         <div class="" v-if="menu.image"><img class="w-100" :src="menu.image" alt=""></div>
-                        <div class=" Txt">
+                        <div class="Txt pr-1">
                           <h4>{{menu.title}}</h4>
                           <p class="text-black-50 mb-0">{{menu.content}}</p>
                         </div>
@@ -74,9 +78,14 @@
               </div>
             </div>-->
           </div>
-          <div class="col col-4 shopping-cart" ref="cart">
+          <div class="col-12 col-lg-4 shopping-cart" ref="cart" id="cart">
             <cart :getRestaurantData="getRestaurantData" :isCartfixed="is_cartfixed"></cart>
           </div>
+          <a class="btn_cart is-mobile fixed-bottom text-white px-3 pt-3 pb-2" @click="handleCart" v-if="total > 0">
+            <i class="icon iconfont icon-gouwuche" style="flex: 0 1 auto;margin: 0 40px 0 0"></i>
+            <span class="text text-center" style="flex: 1 1 auto">查看購物車</span>
+            <span class="money" style="flex: 0 1 auto">NT$ {{total}}</span>
+          </a>
         </div>
       </div>
     </section>
@@ -118,6 +127,28 @@ import Cart from '../components/Cart'
             prevEl: '.swiper-button-prev'
           }
         },
+        swiperImgOption: {
+          slidesPerView: 4,
+          spaceBetween: 0,
+          breakpoints: {
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 0,
+              autoplay: {
+                delay: 2500,
+                disableOnInteraction: false
+              }
+            },
+            400: {
+              slidesPerView: 1,
+              spaceBetween: 0,
+              autoplay: {
+                delay: 1500,
+                disableOnInteraction: false
+              }
+            }
+          }
+        },
         selected_item:null,
         is_categoryfixed: false,
         is_cartfixed: false
@@ -137,6 +168,9 @@ import Cart from '../components/Cart'
       },
       cartTop(){
         return this.$refs.cart.offsetTop
+      },
+      total() {
+          return this.$store.getters.cartTotal
       }
     },
     methods:{
@@ -166,7 +200,12 @@ import Cart from '../components/Cart'
         }else{
           this.is_cartfixed = false
         }
+      },
+      handleCart(){
+        this.$refs.cart.classList.add("show")
+        document.getElementsByTagName("body")[0].classList.add('modal-open')
       }
+      
     }
   }
 </script>

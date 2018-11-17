@@ -7,6 +7,12 @@ ul {
     margin: 0;
     padding: 0;
 }
+.banner{
+    height: 400px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .banner .Txt{
     position: absolute;
     top: 50%;
@@ -15,7 +21,9 @@ ul {
 .banner .Txt h2{
     letter-spacing: 4px;
 }
-
+.category .swiper-wrapper{
+    justify-content: center;
+}
 .selector .custom-control-label::before{
     border: 1px solid $input-border-color;
 }
@@ -36,7 +44,18 @@ ul {
 .selector .custom-control-input:checked~.custom-control-label{
    color: $black;
 }
-
+.filterBox{
+    cursor: pointer;
+}
+.filterBox i{
+    flex: 0 1 auto;
+}
+.filterBox span{
+    flex: 1 1 auto;
+}
+#filterModal .restaurant-search{
+    display: none;
+}
 .photo ul li{
     background: $black;
 }
@@ -48,7 +67,7 @@ ul {
     overflow: unset;
 }
 .restaurant .card-body{
-    padding: 0.75rem 0;
+    padding: 0.75rem;
 }
 .restaurant .box{
     padding-left: 0.75rem;
@@ -90,6 +109,8 @@ ul {
 }
 .menu .menu-list ul li{
     position: relative;
+    display: flex;
+    flex-wrap: nowrap;
 }
 .menu .menu-list ul li h4{
     width: 100%;
@@ -176,4 +197,7 @@ ul {
 .sticky-top{
     position: sticky;
     top: 0;
+}
+.is-mobile{
+    display: none!important;
 }

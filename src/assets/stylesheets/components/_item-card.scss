@@ -56,11 +56,19 @@
     position: relative;
     width: calc(100% - 88px);
 }
+.item-card .title h3{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
 .item-card span.tag,
 .item-card h4 {
     display: inline-block;
     width: 75%;
     vertical-align: top;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .item-card .evaluation{
     position: absolute;

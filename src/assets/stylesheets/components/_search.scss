@@ -37,6 +37,7 @@
 .v-select input[type=search],
 .v-select input[type=search]:focus{
     margin: 0!important;
+    padding: 0 !important;
 }
 .v-select .vs__actions{
     padding: 0;
@@ -58,4 +59,33 @@
 }
 .v-select .open-indicator{
     margin-top: -5px;
+}
+@include media-breakpoint-down(md) {
+    .searchBox{
+        display: none;
+    }
+}
+@include media-breakpoint-down(sm) {
+    .search {
+        display: block !important;
+    }
+
+    .search .label {
+        display: block;
+        margin: 0 0 10px 0 !important;
+    }
+
+    .search .label select,
+    .search .label .searchable,
+    .search .btn {
+        width: 100%;
+    }
+}
+@include media-breakpoint-between(md,lg) {
+    .search .label select{
+        width: 180px;
+    }
+    .search .label .searchable{
+        width: 250px;
+    }
 }

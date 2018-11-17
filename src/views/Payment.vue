@@ -3,7 +3,7 @@
         <section class="content bg-secondary py-4">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col col-7">
+                    <div class="col-12 col-lg-7">
                         <div class="card p-4 mb-4 shadow-sm">
                             <h3 class="mb-4 text-muted"><span class="step">1</span>訂餐詳情</h3>
                             <div class="box mb-2">
@@ -57,7 +57,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="col col-4">
+                    <div class="col-12 col-lg-4">
                         <cart :getRestaurantData="getRestaurantData" :isCartfixed="false"></cart>
                     </div>
                 </div>
