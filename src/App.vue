@@ -17,7 +17,7 @@
                 <i class="icon iconfont icon-gouwuche"></i>
               </a>
             </li>
-            <li class="nav-item dropdown" v-if="is_login">
+            <li class="nav-item dropdown" v-if="is_login && member">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-if="member">
                 <i class="icon iconfont icon-geren mr-1 login-icon align-middle"></i><span class="mobile-hide">{{member.name}}</span>
               </a>

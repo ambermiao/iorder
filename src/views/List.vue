@@ -179,35 +179,35 @@
         switch (total) {
           case 0:
             return this.getRestaurantData
-            break
+            break;
           case 1:
             return getLocation(this.getRestaurantData, this.select_location)
-            break
+            break;
           case 2:
             let data = this.getRestaurantData
             return getTag(data, this.select_tags)
-            break
+            break;
           case 3:
             let data_filter = getLocation(this.getRestaurantData, this.select_location)
             return getTag(data_filter, this.select_tags)
-            break
+            break;
           case 4:
             return getRate(this.getRestaurantData, this.rate)
-            break
+            break;
           case 5:
             let location_filter = getLocation(this.getRestaurantData, this.select_location)
             return getRate(location_filter, this.rate)
-            break
+            break;
           case 6:
             let restaurant = this.getRestaurantData
             let tag_change = getTag(restaurant, this.select_tags)
             return getRate(tag_change, this.rate)
-            break
+            break;
           case 7:
             let location = getLocation(this.getRestaurantData, this.select_location)
             let tag_changes = getTag(location, this.select_tags)
             return getRate(tag_changes, this.rate)
-            break
+            break;
         }
       }
     }

@@ -7892,13 +7892,6 @@ vue-axios@^2.1.4:
   resolved "https://registry.yarnpkg.com/vue-axios/-/vue-axios-2.1.4.tgz#a9d298f7e876f9a87feb336b37adcbce34ff9f9f"
   integrity sha512-DS8Q+WFT3i7nS0aZ/NMmTPf2yhbtlXhj4QEZmY69au/BshsGzGjC6dXaniZaPQlErP3J3Sv1HtQ4RVrXaUTkxA==
 
-vue-content-loading@^1.5.3:
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/vue-content-loading/-/vue-content-loading-1.5.3.tgz#dc9b530ea8210bd627a32fa82700f72ffa7b4f93"
-  integrity sha512-PRgg56Tnab7OhFH+XTJXI5aB+bF1lIiAv1UfWWUzjGGD6csIOaeqL7+Zb5QOj/DAQV8ZetcGkLzGQ2kCmt6+MA==
-  dependencies:
-    vue "^2.5.13"
-
 vue-eslint-parser@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-2.0.3.tgz#c268c96c6d94cfe3d938a5f7593959b0ca3360d1"
@@ -7987,7 +7980,7 @@ vue2-datepicker@^2.6.2:
   dependencies:
     fecha "^2.3.3"
 
-vue@^2.5.13, vue@^2.5.17:
+vue@^2.5.17:
   version "2.5.17"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
   integrity sha512-mFbcWoDIJi0w0Za4emyLiW72Jae0yjANHbCVquMKijcavBGypqlF7zHRgMa5k4sesdv7hv2rB4JPdZfR+TPfhQ==

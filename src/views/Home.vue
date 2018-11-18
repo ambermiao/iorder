@@ -10,8 +10,8 @@
       <div class="container">
         <div class="row">
           <swiper :options="tagSwiperOption">
-            <swiper-slide  v-for="item in getTagData" v-if="item.is_index" class="col col-lg-1 text-center" >
-              <div >
+            <swiper-slide  v-for="item in getTagData" :key="item.id" v-if="item.is_index" class="col col-lg-1 text-center" >
+              <div class="tag-list">
                 <a @click="selectedTag(item.title)">
                   <img :src="item.image" width="40" alt="">
                   <p class="pt-2 mb-0">{{item.title}}</p>
@@ -27,7 +27,7 @@
         <h3 class="font-weight-normal text-black-50 mb-4">熱門餐廳：</h3>          
           <div class="">
             <swiper :options="swiperOption" ref="mySwiper">
-              <swiper-slide  v-for="item in getRestaurantData">
+              <swiper-slide  v-for="item in getRestaurantData" :key="item.id">
                 <div class="item mb-4" >
                   <router-link :to="{ name: 'restaurant', params: { id: item.id }}">
                     <div class="card item-card shadow-sm">
@@ -44,7 +44,7 @@
                           </div>
                           <div class="title d-inline-block p-2">
                             <h3 class="card-text mb-4 text-white">{{item.title}}</h3>
-                            <span class="tag text-muted"><b class="font-weight-normal" v-for="(tag,index) in item.tag_id">{{tag}}<i v-if="index != item.tag_id.length - 1">,</i></b></span>
+                            <span class="tag text-muted"><b class="font-weight-normal" v-for="(tag,index) in item.tag_id" :key="index">{{tag}}<i v-if="index != item.tag_id.length - 1">,</i></b></span>
                             <span class="evaluation"><i class="icon iconfont icon-star mr-1 align-text-top small"></i>{{item.star}}</span>
                           </div>
                         </div>
@@ -83,20 +83,14 @@ import banner from '@/assets/images/banner.jpg';
       this.$Progress.start()
       this.axios.get('/tag').then((response)=>{
         this.getTagData = response.data
-      }).catch((error)=>{
-        console.log(error);
       })
       this.axios.get('/location').then((response)=>{
         this.getLocationData = response.data
         
-      }).catch((error)=>{
-        console.log(error)
       })
       this.axios.get('/restaurant').then((response)=>{
         this.getRestaurantData = response.data
         this.$Progress.finish()
-      }).catch((error)=>{
-        console.log(error)
       })
     },
     data(){

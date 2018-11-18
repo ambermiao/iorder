@@ -82,10 +82,10 @@
     }
 }
 @include media-breakpoint-between(md,lg) {
-    .search .label select{
+    .searchBox .label select{
         width: 180px;
     }
-    .search .label .searchable{
+    .searchBox .label .searchable{
         width: 250px;
     }
 }

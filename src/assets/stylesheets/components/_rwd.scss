@@ -44,6 +44,22 @@
     .shopping-cart .card{
         box-shadow: none!important;
     }
+    .shopping-cart span.money{
+        padding-right: 30px;
+    }
+    .shopping-cart ul li a.remove{
+        top: 0;
+        background: $primary;
+        color: #fff;
+        border: none;
+        line-height: 25px;
+    }
+    .shopping-cart ul li a.remove i{
+        margin-left: 7px;
+    }
+    .shopping-cart ul li a.remove:after{
+        display: none;
+    }
     #cartModal.modal{
         background-color: rgba(50,51,51,0.5);
     }

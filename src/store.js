@@ -59,6 +59,10 @@ export default new Vuex.Store({
         }
       })
     },
+    removeProduct(state,data){
+      state.cart.products.splice(data,1)
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+    },
     restaurant(state,data){
       state.restaurant = data
       state.cart.restaurant_id = data.id
@@ -164,6 +168,7 @@ export default new Vuex.Store({
       return new Promise((resolve) => {
         const product = {
           id: getters.cartMax + 1,
+          hover: false,
           item: item
         }
         commit('addCart', product)
