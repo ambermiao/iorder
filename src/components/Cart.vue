@@ -14,9 +14,9 @@
                         
                     </div>
                     <div class="add-item text-black-50 pl-3">
-                        <p class="mb-0" v-for="option in choosed.item.choose" v-if="option.money > 0 && option.select_option == 2">+
+                        <p class="mb-0" v-for="option in choosed.item.choose" :key="option.title" v-if="option.money > 0 && option.select_option == 2">+
                             {{option.title}}</p>
-                        <p class="mb-0" v-for="option in choosed.item.choose" v-if="option.money == 0">+
+                        <p class="mb-0" v-for="option in choosed.item.choose" :key="option.title" v-if="option.money == 0">+
                             {{optionObj[option.select_option].title}}</p>
                         <p class="mb-0" v-if="choosed.item.other">+ {{choosed.item.other}}</p>
                     </div>

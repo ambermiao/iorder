@@ -82,7 +82,7 @@ export default new Vuex.Store({
   },
   actions: {
     getRestaurant({commit,state},restaurant_id){
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         if (restaurant_id != state.cart.restaurant_id) {
           commit('remove_cart')
           localStorage.setItem('restaurant', state.cart.restaurant_id)

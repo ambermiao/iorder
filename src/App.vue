@@ -147,13 +147,6 @@
       handleResize() {
         this.w_width = window.innerWidth
       },
-      setData (err, post) {
-        if (err) {
-          this.error = err.toString()
-        } else {
-          this.$Progress.finish()
-        }
-      },
       logoutAction(){
         this.$store.dispatch('logout').then(()=>{
           this.$router.go(0)

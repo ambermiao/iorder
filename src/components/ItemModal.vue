@@ -12,7 +12,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="box mb-4" v-for="item in choose_item" v-if="item.money == 0">
+                    <div class="box mb-4" v-for="item in choose_item" :key="item.id" v-if="item.money == 0">
                         <h6 class="mb-3">{{item.title}}選擇</h6>
                         <div class="option row">
                             <div class="btn-group-toggle col-3" v-for="option in item.option_id">
@@ -25,7 +25,7 @@
                     <div class="box mb-4" >
                         <h6 class="mb-3">加料選擇</h6>
                         <div class="option row" >
-                            <div class="col-3 btn-group-toggle" v-for="item in choose_item" v-if="item.money > 0">
+                            <div class="col-3 btn-group-toggle" v-for="item in choose_item" :key="item.id" v-if="item.money > 0">
                                 <label class="btn btn-sm btn-outline-primary w-100" :class="{'active':item.select_option == 2}">
                                     <input type="checkbox" :true-value="2" :false-value="1" v-model="item.select_option"> {{item.title}}<br /><span>+{{item.money}}元</span>
                                 </label>
